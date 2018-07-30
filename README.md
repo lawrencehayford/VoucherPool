@@ -11,6 +11,7 @@ Via Laravel Installer
 First, download the Laravel installer using Composer:
 
 composer global require "laravel/installer"
+
 Make sure to place composer's system-wide vendor bin directory in your $PATH so the laravel executable can be located by your system. This directory exists in different locations based on your operating system; however, some common locations include:
 
 Local Development Server
