@@ -22,6 +22,16 @@ If you have PHP installed locally and you would like to use PHP's built-in devel
 
 php artisan serve
 
+Command To Run Test
+
+php vendor/phpunit/phpunit/phpunit
+
+Or if php unit is set in the environmental viariables Run
+
+phpunit
+
+
+
 
 ![](http://wizbizgh.com/screenshot.png)
 ![](http://wizbizgh.com/documentation.png)
