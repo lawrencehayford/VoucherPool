@@ -17,10 +17,24 @@ class CreateSpecialOffers extends Migration
         Schema::create('special_offer', function (Blueprint $table) {
             $table->increments('id');
             $table->string('offer_id')->unique();
-            $table->string('Name');
+            $table->string('offer_name');
             $table->decimal('discount', 5, 2);
             $table->dateTime('date_created');
         });
+        // Inserting default discounts in db
+         DB::table('special_offer')->insert(
+                     array(
+                         ['offer_id' => time().'1',
+                         'offer_name' => "20% discount For Shoe Purchase",
+                         'discount' => 0.2,
+                         'date_created' => date("Y-m-d h:m:i")
+                         ],
+                         ['offer_id' => time().'2',
+                         'offer_name' => "10% discount For Television Purchase",
+                         'discount' => 0.1,
+                         'date_created' => date("Y-m-d h:m:i")
+                         ]
+                     ));
     }
 
     /**

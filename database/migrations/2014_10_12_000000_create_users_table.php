@@ -20,6 +20,20 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->dateTime('date_created');
         });
+
+        DB::table('recipient')->insert(
+                    array(
+                        ['recipient_id' => time().'1',
+                        'name' => "Lawrence Casely-Hayford",
+                        'email' => "lawrencecaselyhayford@gmail.com",
+                        'date_created' => date("Y-m-d h:m:i")
+                        ],
+                        ['recipient_id' => time().'2',
+                        'name' => "Nana Kwame Asante",
+                        'email' => "kwame@gmail.com",
+                        'date_created' => date("Y-m-d h:m:i")
+                        ]
+                    ));
     }
 
     /**

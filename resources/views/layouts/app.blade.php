@@ -40,7 +40,7 @@
 <![endif]-->
 
 <!--Datatable-->
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <!--end Datatale-->
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -60,7 +60,7 @@
 <!--Load JQuery-->
 <script src="{{asset('js/jquery.min.js') }}"></script>
 <script src="{{asset('js/bootstrap.min.js') }}"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 
 </body>
 
@@ -69,5 +69,59 @@
 $(document).ready(function() {
     $('#voucherTable').DataTable();
 } );
+
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+$("#btnCreate").click(function(){
+
+  //prompt before creating
+  if (!confirm("Are Sure you want to create a Coupon?"))
+  {
+  	return;
+  }
+	//get all form values
+  var recipient_id=$("#recipient_id").val();
+  var offerType=$("#offerType").val();
+  var expringdate=$("#expringdate").val();
+  if(recipient_id.length<1 || offerType.length<1 || expringdate.length<1)
+  {
+      throwMessage("Please Input all Fields");
+      return;
+  }
+
+	$.post("createcoupon",
+	        {
+	          recipient_id: recipient_id,
+            offerType: offerType,
+            expringdate: expringdate
+
+	        },
+	        function(data,status)
+          {
+            console.log(data);
+            if(data.success==0)
+            {
+              throwMessage(data.message);
+	        		window.location.reload();
+              return;
+
+	        	}
+            else
+            {
+              throwMessage(data.message);
+              return
+	        	}
+
+	        });
+});
+function throwMessage(message)
+{
+    alert(message);
+}
 </script>
 </html>

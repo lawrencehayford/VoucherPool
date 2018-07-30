@@ -5,17 +5,17 @@
     <div class="row">
 
       <div class="col-md-4 center-text" >
-          <span class="span-style">2000</span>
+          <span class="span-style">{{$allCoupons}}</span>
           <div>All Coupons</div>
        </div>
 
        <div class="col-md-4 center-text" >
-          <span class="span-style">2000</span>
-          <div>Unsed Coupons</div>
+          <span class="span-style">{{$unusedCoupons}}</span>
+          <div>Unused Coupons</div>
         </div>
 
         <div class="col-md-4 center-text" >
-          <span class="span-style">2000</span>
+          <span class="span-style">{{$usedCoupons}}</span>
           <div>Used Coupons</div>
          </div>
 
